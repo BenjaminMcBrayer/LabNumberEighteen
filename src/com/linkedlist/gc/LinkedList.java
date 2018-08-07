@@ -10,9 +10,9 @@ public class LinkedList {
 		curr = head;
 	}
 
-	public void addAtStart(Object data) {
+	public void addAtStart(Object o) {
 		Node newNode = new Node();
-		newNode.value = data;
+		newNode.value = o;
 		newNode.next = head.next; // newNode will refer to head's next reference.
 		head.next = newNode; // Now head will refer to newNode.
 		++count;
@@ -26,7 +26,7 @@ public class LinkedList {
 		}
 		if (count > 1) {
 			head = head.next;
-			count--;
+			--count;
 		} else {
 			System.out.println("There are no elements in the list!");
 		}
@@ -47,6 +47,18 @@ public class LinkedList {
 		while (node != null) {
 			System.out.println(node.value + " ");
 			node = node.next;
+		}
+	}
+
+	public void printReverse() {
+		curr = head;
+		while (count > 0) {
+			for (int i = 0; i < count; ++i) {
+				curr = curr.next;
+			}
+			System.out.println(curr.value);
+			--count;
+			curr = head;
 		}
 	}
 
@@ -72,9 +84,42 @@ public class LinkedList {
 		Node next = curr.next; // Store curr.next node.
 		curr.next = prev; // Update next again.
 
-		reverseUtil(next, curr);
+		reverseUtil(next, curr); // Recursion.
 		return head;
 	}
-	//FIXME: Add two methods: boolean removeAt(int index) and boolean insertAt(int index, Object o).
-	
+
+	public void removeAt(int index) {
+		if (index == 0) {
+			// Remove the first element.
+			head = head.next;
+		} else {
+			// Remove any element other than the first.
+			// Traverse to node immediately before the one to be removed.
+			Node curr = head;
+			for (int i = 0; i < index; ++i) {
+				curr = curr.next;
+			}
+			// Make its next pointer skip over the node to be removed.
+			curr.next = curr.next.next;
+		}
+	}
+
+	// FIXME: This method is not working.
+	public void insertAt(int index, Object o) {
+		if (index == 0) {
+			addAtStart(o);
+		} else {
+			Node newNode = new Node();
+			newNode.value = o;
+			Node curr = head;
+
+			for (int i = 0; i < index; ++i) {
+				curr = curr.next;
+			}
+
+			newNode.next = curr.next;
+			curr.next = newNode;
+		}
+	}
+
 }

@@ -23,25 +23,51 @@ public class MainApp {
 
 		// Print objects as a list in original order.
 		list.printList(head);
+		System.out.println();
 
 		// Reverse the order and print.
-		//TODO: Create, per instructions, a void printReverse() method.
 		Node crab = list.reverseUtil(head, null);
 		list.printList(crab);
-
-		//Create new list using .AddAtStart() method.
+		System.out.println();
+		
+		//Create new list using .addAtStart() method.
 		LinkedList list2 = new LinkedList();
 		list2.addAtStart(4);
 		list2.addAtStart(3);
 		list2.addAtStart(2);
 		list2.addAtStart(1);
 		list2.printAllNodes();
+		System.out.println();
 
-		// Add multiple instances of an object to list. Remove all of them.
+		//Print the list in reverse.
+		list2.printReverse();
+		System.out.println();
+
+		// Add multiple instances of an object to list.
 		list2.addAtStart(1);
 		list2.addAtStart(1);
+		list2.printAllNodes();
+		System.out.println();
+		
+		// Remove all of them.
 		list2.removeAll(1);
 		list2.printAllNodes();
+		System.out.println();
+		
+		// Replace one of the removed objects. 
+		list2.addAtStart(1);
+		list2.printAllNodes();
+		System.out.println();
+		
+		//Remove the second object in the list (i.e., the one at index 1).
+		list2.removeAt(1);
+		list2.printAllNodes();
+		System.out.println();
+		
+		//Replace the second object in the list (i.e., insert the object at index 1).
+		list2.insertAt(1, 2);
+		list2.printAllNodes();
+		System.out.println();
 
 		// Count the occurrences of numbers in an array.
 		int[] a = { 1, 2, 3, 2, 2, 4, 5, 5, 7, 8, 4, 4, 1, 0, 10 };
