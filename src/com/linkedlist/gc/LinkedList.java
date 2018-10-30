@@ -103,8 +103,24 @@ public class LinkedList {
 			curr.next = curr.next.next;
 		}
 	}
+	
+	public boolean removeAtIndex(int index) {
+		Node current = head;
+		Node removeNode = new Node();
+		
+		for (int i = count - 1; i >= 0; i--) {
 
-	// FIXME: This method is not working.
+			if (i == index) {
+				removeNode = current.next;
+				current.next = removeNode.next;
+				count--;
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+
 	public void insertAt(int index, Object o) {
 		if (index == 0) {
 			addAtStart(o);
